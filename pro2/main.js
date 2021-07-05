@@ -1,4 +1,14 @@
+Vue.component('productDetails',{
+
+})
 Vue.component('product',{
+    props:{
+        premium:{
+            type:Boolean,
+            required:true
+        }
+    },
+
     template:`
         <div class="product">
             <div class="product-img">
@@ -7,7 +17,9 @@ Vue.component('product',{
                     onsale
                 </span>
             </div>
-
+            <p>
+            shipping: {{ shipping }}
+            </p>
             <div class="product-info">
                 <h2 v-bind:href="titleLink">
                     {{ title }}
@@ -113,10 +125,20 @@ Vue.component('product',{
         },
         isOnSale(){
             return this.variants[this.selectedVariant].isOnSale
+        },
+        shipping(){
+            if(this.premium){
+                return "free"
+            }
+            return 2.99
         }
     }
 })
 
+
 var app = new Vue({
     el:'#app',
+    data:{
+        premium: false
+    }
 })
