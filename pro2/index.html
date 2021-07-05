@@ -20,12 +20,15 @@
 
             <div class="product-info">
                 <h2 v-bind:href="titleLink">
-                    {{ product }}
+                    {{ title }}
                 </h2>
                 <p v-if="enough >= 1">
                     in stock
                 </p>
-                <p v-else>
+                <p 
+                v-else
+                :class="{soldOut:!enough}"
+                 >
                     sold out
                 </p>
                 <ul>
@@ -38,18 +41,25 @@
                         {{ size }}
                     </li>
                 </ul>
-                <div v-for="variant in variants" :key="variant.variantId">
-                    <p @mouseover="updateImage(variant.variantImage)">
+                <div 
+                v-for="(variant,index) in variants" 
+                :key="variant.variantId"
+                :style = "{backgroundColor:variant.variantColor, color:white , width : width + 'px'}"
+                @mouseover="updateImage(index)"
+                >
                         {{ variant.variantColor }}
-                    </p>
                 </div>
 
                 <div class="cart">
-                    <button v-on:click="cart += 1">
-                        add to cart
+                    <button v-on:click="decrease">
+                        decrease the cart
                     </button>
-                    <button v-on:click="cartCounter">
-                        add to cart 2
+                    <button 
+                    v-on:click="cartCounter" 
+                    :disabled="!enough"
+                    :class="{diasabledbutton:!enough}"
+                    >
+                        add to cart 
                     </button>
                     <span>
                         {{ cart }}

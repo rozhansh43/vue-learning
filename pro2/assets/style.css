@@ -1,0 +1,6 @@
+.diasabledbutton{
+    background-color: grey;
+}
+.soldOut{
+    text-decoration: line-through;
+}
