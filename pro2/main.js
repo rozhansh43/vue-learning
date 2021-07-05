@@ -1,3 +1,4 @@
+Vue.config.devtools = true
 Vue.component('productDetails',{
 
 })
@@ -70,7 +71,8 @@ Vue.component('product',{
 
             </div>
 
-            <product-review></product-review>
+            <product-review>
+            </product-review>
 
         </div>
     `,
@@ -143,6 +145,10 @@ Vue.component('product',{
 
 Vue.component('product-review',{
     template:`
+    <form class="review-form">
+
+    </form>
+
     <input v-model="name" />
     `,
     data(){
