@@ -7,18 +7,30 @@
     <title>Document</title>
 </head>
 <body>
+  
+  <div id="likecounter">
+    <button v-on:click="increase">
+      like
+    </button>
+    <p>
+      counter:{{ counter }}
+    </p>
+    <p>
+      result:{{ result }}
+    </p>
+  </div>
+  
     <div id="app">
         <span v-bind:title="message" v-bind:style="styleObject">
 hello
         </span>
     </div>
-    <ul id="v-for-object" class="demo">
+      <ul id="v-for-object" class="demo">
         <li v-for="(value,name,,index) in object">
          {{ index }} {{ name }}:{{ value }}
         </li>
       </ul>
       <div id="appp">
-
         <input v-model="message" placeholder="edit me">
         <p>Message is: {{ message }}</p>
       </div>
