@@ -69,6 +69,9 @@ Vue.component('product',{
                 </div>
 
             </div>
+
+            <product-review></product-review>
+
         </div>
     `,
     data(){
@@ -103,13 +106,16 @@ Vue.component('product',{
     },
     methods:{
         cartCounter(){
-            this.cart += 1 
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
         },
         updateImage(index){
             this.selectedVariant = index
             console.log(index)
         },
         decrease(){
+            this.cart -= 1
+        },
+        increase(){
             this.cart -= 1
         }
     },
@@ -135,10 +141,28 @@ Vue.component('product',{
     }
 })
 
+Vue.component('product-review',{
+    template:`
+    <input v-model="name" />
+    `,
+    data(){
+        return{
+            name: null ,
+            review: null ,
+            rating : null
+        }
+    }
+})
 
 var app = new Vue({
     el:'#app',
     data:{
-        premium: false
+        premium: false,
+        cart:[]
+    },
+    methods:{
+        cartCounter(id){
+            this.cart.push(id)
+        }
     }
 })

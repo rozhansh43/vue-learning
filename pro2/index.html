@@ -10,9 +10,13 @@
 <body>
 
     <div id="app">
-        <product :premium="premium"></product>
-        <productDetails></productDetails>
-        <product></product>
+        <div class="cart">
+            <p>
+                {{ cart.length }}
+            </p>
+        </div>
+        <product :premium="premium" @add-to-cart="cartCounter"></product>
+        <product :premium="premium" @add-to-cart="cartCounter"></product>
     </div>
     
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
