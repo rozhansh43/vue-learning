@@ -1,3 +1,4 @@
+Vue.config.devtools = true
 var app = new Vue({
     el : '#appp',
     data :{
@@ -32,4 +33,26 @@ new Vue({
     this.result = this.counter > 5 ? 'greater than 5' : 'lower than 5'
   }
   }
+})
+
+// new vue({
+//   el:"#button-counter"
+// })
+// Vue.component('buttonCounter',{
+//   data(){
+//     return{
+//       count = 0
+//     }
+//   },
+//   template : `<button v-on:click="count++">you have clicked {{ count }} times </button>`
+// })
+new Vue({ el: '#components-demo' })
+
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 })
