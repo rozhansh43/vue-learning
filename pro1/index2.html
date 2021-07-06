@@ -10,10 +10,26 @@
 <body>
 
   
-    <div id="components-demo">
-        <blog-post title="Why Vue is so fun"></blog-post>
+        <div id="app-7">
+            <ol>
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+            ></todo-item>
+            </ol>
+      </div>
+      <div id="app-6">
+          <ol>
+              <vegetable-item
+              v-for="item in list"
+              v-bind:todo="item"
+              v-bind:key="item.id"
+              >
 
-    </div>
+              </vegetable-item>
+          </ol>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="main2.js"></script>

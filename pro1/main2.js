@@ -1,19 +1,30 @@
-var app = new Vue({
-  el:'#app',
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
 })
 
-
-Vue.component('button-counter', {
-  template: '<h2>{{ message }}</h2>',
-  data: function () {
-    return {
-      message:'some text'
-    }
-  },
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { id: 0, text: 'Vegetables' },
+      { id: 1, text: 'Cheese' },
+      { id: 2, text: 'Whatever else humans are supposed to eat' }
+    ]
+  }
 })
 
-
-Vue.component('blog-post', {
-  props: ['title'],
-  template: '<h3>{{ title }}</h3>'
+Vue.component('vegetable-item',{
+props:['todo'],
+template:`<li>{{ todo.text }}</li>`
+})
+var app6 = new Vue({
+  el: '#app-6',
+  data:{
+    list : [
+      { id:0, text:'vegetables'},
+      { id:1 , text:'cheese'},
+      { id:2, text:'fish'}
+    ]
+  }
 })
