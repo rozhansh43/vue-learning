@@ -11,6 +11,7 @@ var app = new Vue({
     }
 })
 
+
 new Vue({
     el: '#v-for-object',
     data: {

@@ -1,12 +1,15 @@
-new Vue({ el: '#components-demo' })
+var app = new Vue({
+  el:'#app',
+})
+
 
 Vue.component('button-counter', {
+  template: '<h2>{{ message }}</h2>',
   data: function () {
     return {
-      count: 0
+      message:'some text'
     }
   },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 })
 
 
