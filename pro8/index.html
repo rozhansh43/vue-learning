@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+       <button v-on:click="show = !show">
+        show/hide
+       </button>
+       <p v-if="show">
+        visible
+       </p>
+       <p v-else>
+        invisible
+       </p>
+       <p v-show="show">
+        show visibility
+       </p>
+       <ul>
+           <li v-for="(person,index) in persons">
+            {{ person.name }}-{{ index }}
+           </li>
+       </ul>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>
