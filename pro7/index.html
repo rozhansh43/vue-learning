@@ -10,13 +10,8 @@
 <body>
     
     <div id="app">
-        <p>
-            {{ title }}
-        </p>
-        <hr>
-        <app-user></app-user>
-        <app-user></app-user>
-        <app-user></app-user>
+       <input type="text" v-on:input="cssClass = $event.target.value">
+       <p v-bind:class="cssClass">class:{{ cssClass }}</p>
     </div>
 
     
