@@ -1,3 +1,18 @@
 <template>
-    <h2>Hello details</h2>
+    <section class="destination">
+        <h1> {{destination.name}} </h1>
+        <div class="destination-detail">
+            <img :src="require(`@/assets/${destination.image}`)" :alt="destination.name">
+        </div>
+    </section>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            destinationId: this.$route.params.id
+        }
+    }
+}
+</script>
