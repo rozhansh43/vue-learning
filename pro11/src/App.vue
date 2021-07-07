@@ -33,7 +33,7 @@ export default {
     padding: 0 10px;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: red;
     }
   }
 }
