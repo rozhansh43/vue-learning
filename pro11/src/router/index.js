@@ -22,22 +22,22 @@ const routes = [
   {
     path:"/brazil",
     name: "brazil",
-    component:() => import ("./views/Brazil"),
+    component:() => import (/* webpackChunkName: "Brazil" */"../views/Brazil"),
   },
   {
     path:"/hawaii",
     name: "hawaii",
-    component:() => import ("./views/Hawaii"),
+    component:() => import (/* webpackChunkName: "Hawaii" */"../views/Hawaii"),
   },
   {
     path:"/panama",
     name: "panama",
-    component:() => import ("./views/panama"),
+    component:() => import (/* webpackChunkName: "Panama" */"../views/Panama"),
   },
   {
     path:"/jamaica",
     name: "jamaica",
-    component:() => import ("./views/Hawaii"),
+    component:() => import (/* webpackChunkName: "Jamaica" */"../views/Jamaica"),
   },
 ];
 
