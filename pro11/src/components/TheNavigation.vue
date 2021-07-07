@@ -8,5 +8,9 @@
     </nav>
 </template>
 <style scoped>
-
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
