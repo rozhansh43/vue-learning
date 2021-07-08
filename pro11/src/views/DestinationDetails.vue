@@ -1,7 +1,9 @@
 <template>
   <div>
+
     <section class="destination">
       <h1>{{ destination.name }}</h1>
+
       <div class="destination-detail">
         <img
           :src="require(`@/assets/${destination.image}`)"
@@ -10,31 +12,37 @@
         <p>{{ destination.description }}</p>
       </div>
     </section>
+
     <section class="experiences">
       <h2>Top Experiences in {{ destination.name }}</h2>
+
       <div class="cards">
         <div
           v-for="experience in destination.experiences"
           :key="experience.slug"
           class="card"
         >
+
           <router-link
             :to="{
               name: 'experienceDetails',
               params: { experienceSlug: experience.slug },
             }"
           >
+
             <img
               :src="require(`@/assets/${experience.image}`)"
               :alt="experience.name"
             />
+            
             <span class="card__text">
               {{ experience.name }}
             </span>
           </router-link>
         </div>
       </div>
-      <router-view :key="$route.path"/>
+
+      <router-view :key="$route.path" />
     </section>
   </div>
 </template>
@@ -42,14 +50,14 @@
 <script>
 import store from "@/store.js";
 export default {
-  data() {
+  data () {
     return {
       slug: this.$route.params.slug,
     };
   },
   computed: {
-    destination() {
-      return store.destinations.find(
+    destination () {
+      return store.destinations.find (
         (destination) => destination.slug === this.slug
       );
     },
