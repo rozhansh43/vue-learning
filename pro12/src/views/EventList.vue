@@ -5,7 +5,7 @@
         </h1>
 
         <EventCard />
-
+        <BaseIcon/>
 
     </div>
 </template>
