@@ -8,6 +8,8 @@
           {{ events.title }}
         </h4>
 
+        <BaseIcon name="users" />
+
         <span> {{ events.attendees.length }} attending </span>
       </div>
     </router-link>
