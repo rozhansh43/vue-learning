@@ -1,34 +1,40 @@
 <template>
   <nav id="nav">
-      <p class="logo"> The Vue Travel App</p>
+    <p class="logo">
+      The Vue Travel App
+    </p>
+
     <ul class="nav-links">
       <li class="links">
-        <router-link to="/"> Home </router-link>
+        <router-link to="/">
+          Home
+        </router-link>
       </li>
-      <li v-for="destination in destinations"
-      :key="destination.name"
-      class="links">
-    <router-link :to="{
-        name: 'DestinationDetails',
-        params: {slug:destination.slug}
-    }">
-    {{ destination.name }}
-    </router-link>
+      
+      <li
+        v-for="destination in destinations"
+        :key="destination.name"
+        class="links"
+      >
+        <router-link :to="{ name: 'DestinationDetails', params: { slug: destination.slug } }">
+          {{ destination.name }}
+        </router-link>
       </li>
     </ul>
-    
   </nav>
 </template>
+
 <script>
 import store from '@/store'
 export default {
-    data(){
-        return{
-            destinations:store.destinations,
-        }
+  data () {
+    return {
+      destinations: store.destinations
     }
+  }
 }
 </script>
+
 <style scoped>
 #nav {
   display: flex;
