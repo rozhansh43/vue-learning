@@ -1,14 +1,16 @@
 <template>
-  <div class="event-card -shadow ">
-      <span>
-          @{{ events.time }} on {{ events.date }}
-      </span>
-    <h4 class="title">
-      {{ events.title }}
-    </h4>
-    <span>
-        {{ events.attendees.length }} attending
-    </span>
+  <div>
+    <router-link class="event-link" :to="{ name: 'event-show', params: { id: 1 } }">
+      <div class="event-card -shadow">
+        <span> @{{ events.time }} on {{ events.date }} </span>
+
+        <h4 class="title">
+          {{ events.title }}
+        </h4>
+
+        <span> {{ events.attendees.length }} attending </span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -22,9 +24,8 @@ export default {
         date: "tues aug 19 , 2018 ",
         time: "5:00",
         attendees: [
-            { id : 'abc123' , name : 'Adam jahr'},
-            { id : 'edrf89' , name : 'gregg poli'},
-
+          { id: "abc123", name: "Adam jahr" },
+          { id: "edrf89", name: "gregg poli" },
         ],
       },
     };
