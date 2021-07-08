@@ -20,26 +20,6 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path:"/brazil",
-    name: "brazil",
-    component:() => import (/* webpackChunkName: "Brazil" */"../views/Brazil"),
-  },
-  {
-    path:"/hawaii",
-    name: "hawaii",
-    component:() => import (/* webpackChunkName: "Hawaii" */"../views/Hawaii"),
-  },
-  {
-    path:"/panama",
-    name: "panama",
-    component:() => import (/* webpackChunkName: "Panama" */"../views/Panama"),
-  },
-  {
-    path:"/jamaica",
-    name: "jamaica",
-    component:() => import (/* webpackChunkName: "Jamaica" */"../views/Jamaica"),
-  },
-  {
     path:"/details/:id",
     name: "DestinationDetails",
     component:() => import (/* webpackChunkName: "DestinationDetails" */"../views/DestinationDetails"),
