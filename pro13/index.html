@@ -16,11 +16,11 @@
     <div id="app">
         <div class="product">
             <div class="product-image">
-                <img :src="image.src" :alt="image.name">
+                <img :src="image" :alt="name">
             </div>
             <div class="product-info">
                 <h1>
-                    {{ product }}
+                    {{ title }}
                 </h1>
 
                 <p v-if="inventory >= 1">
@@ -37,11 +37,21 @@
                     </li>
                 </ul>
 
-                <div v-for="varient in varients" :key="varient.varientId">
-                    <p>
-                        {{ varient.varientColor }}
+                <div v-for="varient in varients" :key="varient.varientId" class="color-box" :style=" {backgroundColor: varient.varientColor } ">
+                    <p @mouseover="updateProduct(varient.varientImage)">
                     </p>
                 </div>
+
+                <button v-on:click="AddToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
+                    Add to cart
+                </button>
+
+                <div class="cart">
+                    <p>
+                        Cart {{ cart }}
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
