@@ -1,20 +1,29 @@
 <template>
   <div>
-    <h1>Event Listing</h1>
+    <h1>
+      Event Listing
+    </h1>
 
     <EventCard v-for="event in events" :key="event.id" :event="event"/>
+
     <BaseIcon />
 
     <MediaBox>
+
       <h2 slot="heading">
-          Adam j
-        </h2>
+        Adam j
+      </h2>
+
       <template>
+
         <p slot="paragraph">
-            My words
+          My words
         </p>
+
         <BaseIcon name="book" />
+
       </template>
+
     </MediaBox>
   </div>
 </template>
@@ -28,19 +37,19 @@ export default {
     EventCard,
     BaseIcon,
   },
-  data() {
+  data () {
     return {
       events: []
     }
   },
-  created() {
+  created () {
     axios
-    .get('http://localhost:3000/events')
-    .then(response =>{
+    .get ('http://localhost:3000/events')
+    .then (response =>{
       this.events = response.data
     })
-    .catch(error => {
-      console.log('there was an error' + error.response)
+    .catch (error => {
+      console.log ('there was an error' + error.response)
     })
   }
 };
