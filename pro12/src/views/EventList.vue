@@ -30,29 +30,28 @@
 
 <script>
 import EventCard from "@/components/EventCard.vue"
-import axios from 'axios'
+import EventService from '@/services/EventService.js'
 import BaseIcon from '../components/BaseIcon.vue'
 export default {
   components: {
     EventCard,
     BaseIcon,
   },
-  data () {
+  data() {
     return {
       events: []
     }
   },
-  created () {
-    axios
-    .get ('http://localhost:3000/events')
-    .then (response =>{
+  created() {
+    EventService.getEvents()
+    .then(response => {
       this.events = response.data
     })
-    .catch (error => {
-      console.log ('there was an error' + error.response)
+    .catch(error => {
+      console.log('There was an error:', error.response)
     })
   }
-};
+}
 </script>
 
 <style scoped></style>
