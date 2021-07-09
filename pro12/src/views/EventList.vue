@@ -2,7 +2,7 @@
   <div>
     <h1>Event Listing</h1>
 
-    <EventCard />
+    <EventCard v-for="event in events" :key="event.id" :event="event"/>
     <BaseIcon />
 
     <MediaBox>
@@ -20,13 +20,29 @@
 </template>
 
 <script>
-import EventCard from "@/components/EventCard.vue";
-import BaseIcon from '../components/BaseIcon.vue';
+import EventCard from "@/components/EventCard.vue"
+import axios from 'axios'
+import BaseIcon from '../components/BaseIcon.vue'
 export default {
   components: {
     EventCard,
     BaseIcon,
   },
+  data() {
+    return {
+      events: []
+    }
+  },
+  created() {
+    axios
+    .get('http://localhost:3000/events')
+    .then(response =>{
+      this.events = response.data
+    })
+    .catch(error => {
+      console.log('there was an error' + error.response)
+    })
+  }
 };
 </script>
 
