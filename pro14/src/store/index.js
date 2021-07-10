@@ -24,9 +24,6 @@ export default new Vuex.Store({
   actions: {},
   modules: {},
   getters: {
-    getEventById: state => id => {
-      return state.event.find(event => event.id === id )
-    },
     catLength: state => {
       return state.categories.length
     },
@@ -34,7 +31,7 @@ export default new Vuex.Store({
       return state.todos.filter( todo => todo.done )
     },
     activeTodosCount : (state , getters ) => {
-      return state.todos.filter( todo => !todo.done ).length
+      return state.todos.length - getters.doneTodos.length
     }
   }
 });

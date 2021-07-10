@@ -16,10 +16,6 @@
                 {{ cat }}
             </li>
         </ul>
-
-        <p>
-            {{ getEvents(1) }}
-        </p>
     </div>
 </template>
 
@@ -27,9 +23,6 @@
 import { mapState } from 'vuex'
 export default {
     computed: {
-        getEvent() {
-            return this.$store.getters.getEventById
-        },
         catLength() {
             return this.$store.getters.catLength
         },
