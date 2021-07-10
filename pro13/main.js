@@ -14,6 +14,7 @@ Vue.component ('product', {
             <div class="product-image">
                 <img :src="image" :alt="name" />
             </div>
+
             <div class="product-info">
                 <h1>
                     {{ title }}
@@ -27,7 +28,7 @@ Vue.component ('product', {
                     out of stock
                 </p>
                 <p>
-                Shipping: {{ shipping }}
+                    Shipping: {{ shipping }}
                 </p>
 
                 <ul>
@@ -40,12 +41,18 @@ Vue.component ('product', {
                 :key="variant.variantId"
                 class="color-box"
                 :style = "{backgroundColor:variant.variantColor}"
-                @mouseover="updateImage(index)">
+                @mouseover="updateImage(index)"
+                >
                     <p @mouseover="updateProduct(variant.variantImage)">
                     </p>
                 </div>
 
-                <button class="button" @click="AddToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
+                <button 
+                class="button" 
+                @click="AddToCart" 
+                :disabled="!inStock" 
+                :class="{ disabledButton: !inStock }"
+                >
                     Add to cart
                 </button>
 
@@ -86,7 +93,7 @@ Vue.component ('product', {
         AddToCart() {
             this.$emit('add-to-cart',this.variants[this.selectedVariant].variantId)
         },
-        updateImage(index){
+        updateImage(index) {
             this.selectedVariant = index
             console.log(index)
         },
@@ -235,15 +242,15 @@ Vue.component('product-tabs', {
             <ul v-else>
                 <li v-for="review in reviews">
                     <p>
-                    {{ review.name }}
+                        {{ review.name }}
                     </p>
 
                     <p>
-                    {{ review.rating }}
+                        {{ review.rating }}
                     </p>
 
                     <p>
-                    {{ review.review }}
+                        {{ review.review }}
                     </p>
                 </li>
             </ul>
