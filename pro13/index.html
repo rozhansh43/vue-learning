@@ -37,8 +37,8 @@
                     </li>
                 </ul>
 
-                <div v-for="varient in varients" :key="varient.varientId" class="color-box" :style=" {backgroundColor: varient.varientColor } ">
-                    <p @mouseover="updateProduct(varient.varientImage)">
+                <div v-for="variant in variants" :key="variant.variantId" class="color-box" :style=" {backgroundColor: variant.variantColor } ">
+                    <p @mouseover="updateProduct(variant.variantImage)">
                     </p>
                 </div>
 

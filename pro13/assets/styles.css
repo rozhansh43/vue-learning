@@ -25,6 +25,10 @@ body {
     margin-top: 5px;
 }
 
+.product {
+    display: flex;
+}
+
 .cart {
     margin: 25px 100px;
     float: right;

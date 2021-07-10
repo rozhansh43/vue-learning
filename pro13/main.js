@@ -10,15 +10,15 @@ var app = new Vue({
         inStock: true,
         image: './assets/images/socks_green.jpg',
         details: ['cotton', 'polyester', 'gender-nuteral'],
-        varients: [{
-                varientId: 3435,
-                varientColor: 'green',
-                varientImage: './assets/images/socks_green.jpg',
+        variants: [{
+                variantId: 3435,
+                variantColor: 'green',
+                variantImage: './assets/images/socks_green.jpg',
             },
             {
-                varientId: 4343,
-                varientColor: 'blue',
-                varientImage: './assets/images/socks_blue.jpg',
+                variantId: 4343,
+                variantColor: 'blue',
+                variantImage: './assets/images/socks_blue.jpg',
             }
         ],
         cart: 0,
@@ -27,8 +27,8 @@ var app = new Vue({
         AddToCart() {
             this.cart += 1
         },
-        updateProduct(varientImage) {
-            this.image = varientImage
+        updateProduct(variantImage) {
+            this.image = variantImage
         }
     },
     computed: {
