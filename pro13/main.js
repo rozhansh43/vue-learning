@@ -47,12 +47,6 @@ Vue.component ('product', {
                     Add to cart
                 </button>
 
-                <div class="cart">
-                    <p>
-                        Cart {{ cart }}
-                    </p>
-                </div>
-
             </div>
         </div>
     `,
@@ -76,17 +70,17 @@ Vue.component ('product', {
                 variantImage: './assets/images/socks_blue.jpg',
             }
         ],
-        cart: 0,
         }
     },
     methods: {
         AddToCart() {
-            this.cart += 1
+            this.$emit('add-to-cart',this.variants[this.selectedVariant].variantId)
         },
         updateImage(index){
             this.selectedVariant = index
             console.log(index)
         },
+
     },
     computed: {
         title() {
@@ -110,5 +104,11 @@ var app = new Vue({
     el: '#app',
     data:{
         premium: false,
+        cart: []
     },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id)
+        }
+    }
 })
