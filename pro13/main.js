@@ -8,7 +8,7 @@ var app = new Vue({
         brand: 'Vue',
         inventory: 2,
         inStock: true,
-        image: './assets/images/socks_green.jpg',
+        selectedVariant: 0,
         details: ['cotton', 'polyester', 'gender-nuteral'],
         variants: [{
                 variantId: 3435,
@@ -27,13 +27,17 @@ var app = new Vue({
         AddToCart() {
             this.cart += 1
         },
-        updateProduct(variantImage) {
-            this.image = variantImage
-        }
+        updateImage(index){
+            this.selectedVariant = index
+            console.log(index)
+        },
     },
     computed: {
         title() {
             return this.brand + ' ' + this.product
-        }
+        },
+        image(){
+            return this.variants[this.selectedVariant].variantImage
+        },
     }
 })

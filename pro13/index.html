@@ -16,7 +16,7 @@
     <div id="app">
         <div class="product">
             <div class="product-image">
-                <img :src="image" :alt="name">
+                <img :src="image" />
             </div>
             <div class="product-info">
                 <h1>
@@ -37,12 +37,16 @@
                     </li>
                 </ul>
 
-                <div v-for="variant in variants" :key="variant.variantId" class="color-box" :style=" {backgroundColor: variant.variantColor } ">
+                <div v-for="(variant,index) in variants" 
+                :key="variant.variantId"
+                class="color-box"
+                :style = "{backgroundColor:variant.variantColor}"
+                @mouseover="updateImage(index)">
                     <p @mouseover="updateProduct(variant.variantImage)">
                     </p>
                 </div>
 
-                <button v-on:click="AddToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
+                <button @click="AddToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
                     Add to cart
                 </button>
 
