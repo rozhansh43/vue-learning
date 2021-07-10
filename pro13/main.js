@@ -1,6 +1,12 @@
 Vue.config.devtools = true;
 
 Vue.component ('product', {
+    props: {
+        premium: {
+            type:Boolean,
+            required: true
+        }
+    },
     template: `
     <div class="product">
             <div class="product-image">
@@ -17,6 +23,9 @@ Vue.component ('product', {
 
                 <p v-else>
                     out of stock
+                </p>
+                <p>
+                Shipping: {{ shipping }}
                 </p>
 
                 <ul>
@@ -88,9 +97,18 @@ Vue.component ('product', {
         },
         inStock() {
             return this.variants[this.selectedVariant].variantQuantity
+        },
+        shipping() {
+            if (this.premium) {
+                return 'Free'
+            }
+            return 3.99
         }
     }
 })
 var app = new Vue({
     el: '#app',
+    data:{
+        premium: false,
+    },
 })
