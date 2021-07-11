@@ -11,6 +11,11 @@ Vue.component('plan', {
     }
 })
 
+Vue.component('plan-picker', {
+    template: '#plan-picker-template',
+    
+})
+
 var App = new Vue({
     el: '#app',
     data: {
