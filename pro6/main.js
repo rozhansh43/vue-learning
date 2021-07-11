@@ -6,6 +6,7 @@ new Vue({
     data:{
         title:'hello world',
     },
+    props: ['likes'],
     components:{
         'app-user' :{
                 data:function(){
@@ -14,10 +15,12 @@ new Vue({
                             {username: 'max'},
                             {username: 'sam'},
                             {username: 'david'},
-                        ]
+                        ],
+                        like: 0,
                     }
                 },
-                template:`<div><div class="user" v-for="user in users"><p>username: {{ user.username }}</p></div></div>`
+            template:'#app-user',
+                
         }
     }
 })
