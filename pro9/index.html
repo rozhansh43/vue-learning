@@ -10,12 +10,20 @@
 <body>
     
     <div id="app">
-        <p>
-            {{ title | uppercase }}
-        </p>
-        <p>
-            {{ tmessage | uppercase | lowercase }}
-        </p>
+        <form>
+            {{ newCar }}
+            <input v-model="newCar" @keyup.enter="increaseCar">
+
+            <button @click.prevent.stop="increaseCar">
+                insert
+            </button>
+
+            <ul>
+                <li v-for="car in cars" v-model="newCar">
+                    {{ car.name }}
+                </li>
+            </ul>
+        </form>
     </div>
 
     

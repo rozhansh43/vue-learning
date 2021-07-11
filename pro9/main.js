@@ -1,21 +1,26 @@
-Vue.filter('uppercase', function(value){
-    return value.toUpperCase();
-});
 
 new Vue({
     el:'#app',
     data:{
-        title:'hello world',
-        meesage:'something'
+        cars: [
+            { name: 'Kia' },
+            { name: 'BMW' },
+            { name: 'MVM' },
+            { name: 'Hyundai' }
+        ],
+        newCar: ""
     },
-    computed:{
-        theTitle: function(){
-            return this.title.toUpperCase()
+    methods: {
+        increaseCar() {
+            this.cars.push({name: this.newCar});
+            this.newCar= ""
         }
     },
-    filter:{
-        lowercase: function(value){
-            return this.value.toLowerCase();
+    computed: {
+        carName() {
+            if(this.newCar.length > 2){
+                return 'car name is :' + this.newCar
+            }
         }
     }
 })
