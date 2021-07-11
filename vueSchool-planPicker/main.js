@@ -7,5 +7,8 @@ Vue.component('plan', {
 })
 
 var App = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        plans: ['The Addict', 'The Curious', 'The Hacker']
+    }
 })
