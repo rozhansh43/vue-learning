@@ -8,16 +8,7 @@ Vue.component('plan', {
             type: String,
             required: true
         },
-        like: 0,
-        test: {
-            type: String,
-            requried: true
-        }
     }
-})
-
-Vue.component('likeButton', {
-    template: '#likeButton',
 })
 
 var App = new Vue({
@@ -27,12 +18,6 @@ var App = new Vue({
         image: {
             title: 'coffee',
             src: 'coffee.jpg'
-        },
-        like: 0,
-    },
-    methods: {
-        likeCounter() {
-            this.like += 1
         }
     }
 })
