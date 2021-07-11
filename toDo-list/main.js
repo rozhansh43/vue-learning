@@ -1,30 +1,38 @@
-new Vue({
-    el: '#todo-list-example',
-    data: {
-      newTodoText: '',
-      todos: [
-        {
-          id: 1,
-          title: 'Do the dishes',
+Vue.config.devtools = true
+
+Vue.component('plan', {
+    template: '#plan-template',
+
+    props: {
+        name: {
+            type: String,
+            required: true
         },
-        {
-          id: 2,
-          title: 'Take out the trash',
-        },
-        {
-          id: 3,
-          title: 'Mow the lawn'
+        like: 0,
+        test: {
+            type: String,
+            requried: true
         }
-      ],
-      nextTodoId: 4
+    }
+})
+
+Vue.component('likeButton', {
+    template: '#likeButton',
+})
+
+var App = new Vue({
+    el: '#app',
+    data: {
+        plans: ['The Addict', 'The Curious', 'The Hacker'],
+        image: {
+            title: 'coffee',
+            src: 'coffee.jpg'
+        },
+        like: 0,
     },
     methods: {
-      addNewTodo: function () {
-        this.todos.push({
-          id: this.nextTodoId++,
-          title: this.newTodoText
-        })
-        this.newTodoText = ''
-      }
+        likeCounter() {
+            this.like += 1
+        }
     }
-  })
+})

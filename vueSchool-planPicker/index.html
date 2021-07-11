@@ -23,10 +23,15 @@
 
             <!-- <input type="text" :v-bind="add" >  -->
 
+            
+            <likeButton :test="mybutton" >
+
+            </likeButton>
+
             <div class="plans">
 
                 <plan v-for="plan in plans" :name="plan">
-
+            
                 </plan>
 
             </div>
@@ -42,11 +47,19 @@
                     <span class="title">
                        {{ name }}
                     </span>
+
                 </div>
             </div>
         </div>
 
     </script>
+
+    <script type="text/x-template" id="likeButton">
+        <button type="text" @click="likeCounter">
+            {{ like }}
+        </button>
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="main.js"></script>
 </body>
