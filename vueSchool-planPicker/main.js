@@ -1,5 +1,19 @@
 Vue.config.devtools = true
 
+Vue.component('plan-picker', {
+    template: '#plan-picker-template',
+    data() {
+        return {
+            plans: ['The Addict', 'The Curious', 'The Hacker'],
+            image: {
+                title: 'coffee',
+                src: 'coffee.jpg'
+            }
+        }
+    }
+
+})
+
 Vue.component('plan', {
     template: '#plan-template',
 
@@ -11,18 +25,6 @@ Vue.component('plan', {
     }
 })
 
-Vue.component('plan-picker', {
-    template: '#plan-picker-template',
-    
-})
-
-var App = new Vue({
-    el: '#app',
-    data: {
-        plans: ['The Addict', 'The Curious', 'The Hacker'],
-        image: {
-            title: 'coffee',
-            src: 'coffee.jpg'
-        }
-    }
+new Vue({
+    el: '#app'
 })
