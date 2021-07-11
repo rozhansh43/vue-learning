@@ -9,63 +9,7 @@ Vue.component ('product', {
             required: true
         }
     },
-    template: `
-    <div class="product">
-            <div class="product-image">
-                <img :src="image" :alt="name" />
-            </div>
-
-            <div class="product-info">
-                <h1>
-                    {{ title }}
-                </h1>
-
-                <p v-if="inStock >= 1">
-                    in stock
-                </p>
-
-                <p v-else>
-                    out of stock
-                </p>
-                <p>
-                    Shipping: {{ shipping }}
-                </p>
-
-                <ul>
-                    <li v-for="detail in details">
-                        {{ detail }}
-                    </li>
-                </ul>
-
-                <div v-for="(variant,index) in variants" 
-                :key="variant.variantId"
-                class="color-box"
-                :style = "{backgroundColor:variant.variantColor}"
-                @mouseover="updateImage(index)"
-                >
-                    <p @mouseover="updateProduct(variant.variantImage)">
-                    </p>
-                </div>
-
-                <button 
-                class="button" 
-                @click="AddToCart" 
-                :disabled="!inStock" 
-                :class="{ disabledButton: !inStock }"
-                >
-                    Add to cart
-                </button>
-
-         
-
-            </div>
-
-            <product-tabs :reviews="reviews">
-
-            </product-tabs>
-
-        </div>
-    `,
+    template: '#product',
     data() {
         return{
         product: 'socks',
@@ -124,65 +68,7 @@ Vue.component ('product', {
 })
 
 Vue.component('product-review', {
-    template: `
-    <form class="review-form" @submit.prevent="onSubmit">
-
-        <p v-if="errors.length">
-            <b>
-                please correct the following errors
-            </b>
-
-            <ul>
-                <li v-for="error in errors">
-                    {{ error }}
-                </li>
-            </ul>
-        </p>
-        <p>
-            <label for="name">
-                 Name
-            </label>
-
-            <input id="name" v-model="name">
-        </p>
-
-        <p>
-            <label for="review">
-                Review:
-            </label>
-            <textarea id="review" v-model="review">
-            </textarea>
-        </p>
-
-        <p>
-            <label for="rating">
-                Review:
-            </label>
-            <select id="rating" v-model.number="rating">
-                <option>
-                    5
-                </option>
-                <option>
-                    4
-                </option>
-                <option>
-                    3
-                </option>
-                <option>
-                    2
-                </option>
-                <option>
-                    1
-                </option>
-            </select>
-        </p>
-
-        <p>
-            <input type="submit" value="submit">
-        </p>
-
-    </form>
-    `,
+    template: '#product-review',
     data() {
         return {
             name: null,
@@ -219,50 +105,7 @@ Vue.component('product-tabs', {
             required: true
         }
     },
-    template: `
-    <div>
-        <span class="tab" 
-        :class="{ activeTab : selectedTab === tab}"
-        v-for="(tab, index) in tabs" 
-        :key="index"
-        @click="selectedTab = tab"
-        >
-            {{ tab }}
-        </span>
-
-        <div v-show="selectedTab === 'Review'">
-            <h2>
-                Reviews 
-            </h2>
-
-            <p v-if="!reviews.length">
-                There are no reviews yet
-            </p>
-
-            <ul v-else>
-                <li v-for="review in reviews">
-                    <p>
-                        {{ review.name }}
-                    </p>
-
-                    <p>
-                        {{ review.rating }}
-                    </p>
-
-                    <p>
-                        {{ review.review }}
-                    </p>
-                </li>
-            </ul>
-    </div>            
-
-    <product-review 
-    v-show="selectedTab === 'Make a Review'"
-    >
-    </product-review>
-
-    </div>
-    `,
+    template: '#product-tabs',
     data() {
         return {
             tabs: ['Reviews', 'Make a Review'],
