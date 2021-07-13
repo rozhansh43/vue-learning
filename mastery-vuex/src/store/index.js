@@ -31,7 +31,7 @@ export default new Vuex.Store({
       return state.todos.filter( todo => todo.done )
     },
     activeTodosCount : (state , getters ) => {
-      return state.todos.length - getters.doneTodos.length
+      return state.todos.filter( tod0 => !todo.done ).length
     }
   }
 });
