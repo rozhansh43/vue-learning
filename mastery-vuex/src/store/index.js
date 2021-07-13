@@ -1,12 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from "vue"
+import Vuex from "vuex"
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     user: { id: 'abc321', name: 'Adam jahr'},
-    categories : [
+    categories: [
       'sustainability',
       'nature',
       'education',
@@ -14,10 +14,11 @@ export default new Vuex.Store({
       'food',
       'community'
     ],
-    todos: [
-      {id:1 , text: '...', done: false},
-      {id:2 , text: '...', done: true},
-      {id:3 , text: '...', done: false}
+    events: [
+      { id: 1, title: '...', organizer: '...' },
+      { id: 2, title: '...', organizer: '...' },
+      { id: 3, title: '...', organizer: '...' },
+      { id: 4, title: '...', organizer: '...' }
     ]
   },
   mutations: {},
