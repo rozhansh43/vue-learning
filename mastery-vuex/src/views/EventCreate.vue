@@ -6,6 +6,10 @@
         <p>
             this was created by {{ user.id }}
         </p>
+
+        <p>
+            {{ getEvent(1)}}
+        </p>
         
         <p>
             there are {{ catLength }} categories
@@ -23,8 +27,8 @@
 import { mapState } from 'vuex'
 export default {
     computed: {
-        catLength() {
-            return this.$store.getters.catLength
+        getEvent() {
+            return this.$store.getters.getEventById
         },
         ...mapState(['user', 'categories'])
     }
