@@ -86,7 +86,7 @@ export default {
   data() {
     const times = []
     for(let i = 1; i <= 24; i++) {
-        times.push(i + ":00")
+        times.push(i + ':00')
     }
     return {
         times,
@@ -95,7 +95,7 @@ export default {
     }
   },
   methods: {
-    createEvent() {
+   createEvent() {
       this.$store
         .dispatch('createEvent', this.event)
         .then(() => {

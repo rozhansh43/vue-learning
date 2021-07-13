@@ -10,7 +10,7 @@
       </h1>
 
       <h5>
-          Organized by {{ event.organizer }}
+          Organized by {{ event.organizer ? event.organizer.name : '' }}
      </h5>
 
       <h5>
