@@ -1,4 +1,5 @@
 import EventService from '@/services/EventService.js'
+export const namespaced = true
 
 export const state = {
   events: [],
@@ -6,50 +7,49 @@ export const state = {
   event: {}
 }
 export const mutations = {
-  ADD_EVENT ( state, event) {
+  ADD_EVENT(state, event) {
     state.events.push(event)
   },
-  SET_EVENTS (state, events) {
+  SET_EVENTS(state, events) {
     state.events = events
   },
-  SET_EVENTS_TOTAL (state, events) {
-    state.events = events
+  SET_EVENTS_TOTAL(state, eventsTotal) {
+    state.eventsTotal = eventsTotal
   },
-  SET_EVENTS (state, events) {
+  SET_EVENT(state, events) {
     state.event = event
   }
 }
 export const actions = {
   createEvent({ commit }, event) {
-    return EventService,postEvent(event).then(() => {
+    return EventService.postEvent(event).then(() => {
       commit('ADD_EVENT', event)
     })
   },
   fetchEvents({ commit }, { perPage, page}) {
-    EventService.getEvents (perPage, page)
+    EventService.getEvents(perPage, page)
     .then(response => {
-      console.log('Total events are' + response.headers['x-total-count'])
+      commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
       commit('SET_EVENTS', response.data)
     })
     .catch(error => {
       console.log('There was an error:', error.response)
     })
   },
-  fetchEvent ({ commit, getters }, id) {
-    var event =getters.getEventById(id)
+  fetchEvent({ commit, getters }, id) {
+    var event = getters.getEventById(id)
 
     if (event) {
       commit('SET_EVENT', event)
     } else {
       EventService.getEvent(id)
-        .then((response) => {
-          commit('SET_EVENT',response.data);
+        .then(response => {
+          commit('SET_EVENT', response.data)
         })
-        .catch((error) => {
-          console.log("there was an error:", error.response);
+        .catch(error => {
+          console.log("there was an error:", error.response)
         })
     }
-    
   }
 }
 export const getters = {

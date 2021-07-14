@@ -8,7 +8,9 @@
     <template v-if="page != 1">
       <router-link :to="{ name: 'event-list', query: { page: page - 1 }}" rel="prev">
         Prev page
-      </router-link> |
+      </router-link> 
+      <template v-if="hasNextPage"> | </template>
+
     </template>
     <router-link :to="{ name: 'event-list', query: { page: page - 1 }}" rel="next">
       Next page
@@ -46,8 +48,9 @@ export default {
     BaseIcon,
   },
   created() {
+  this.perPage = 3
     this.$store.dispatch('event/fetchEvents', {
-      perPage: 3,
+      perPage: this.perPage,
       page: this.page
     })
   },
@@ -58,7 +61,7 @@ export default {
     hasNextPage() {
       return this.event.eventsTotal > this.page * this.perPage
     },
-    ...mapState([ 'events', 'user'])
+    ...mapState([ 'event', 'user'])
   }
 }
 </script>

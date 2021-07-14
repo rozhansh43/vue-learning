@@ -91,11 +91,11 @@ export default {
     return {
         times,
         categories: this.$store.state.categories,
-        event: this.createFreshEventObject ()
+        event: this.createFreshEventObject()
     }
   },
   methods: {
-   createEvent () {
+   createEvent() {
       this.$store
         .dispatch('event/createEvent', this.event)
         .then(() => {
