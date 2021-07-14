@@ -1,6 +1,5 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import EventService from '@/services/EventService.js'
 import * as user from '@/store/modules/user.js'
 import * as event from '@/store/modules/event.js'
 
@@ -13,7 +12,6 @@ export default new Vuex.Store({
     event
   },
   state: {
-    user: { id: 'abc321', name: 'Adam jahr'},
     categories: [
       'sustainability',
       'nature',
@@ -22,16 +20,22 @@ export default new Vuex.Store({
       'food',
       'community'
     ],
-    events: [
-      { id: 1, title: '...', organizer: '...' },
-      { id: 2, title: '...', organizer: '...' },
-      { id: 3, title: '...', organizer: '...' },
-      { id: 4, title: '...', organizer: '...' }
-    ]
+    events: [],
+    eventsTotal: 0,
+    event: {}
   },
   mutations: {
     ADD_EVENT ( state, event) {
       state.events.push(event)
+    },
+    SET_EVENTS (state, events) {
+      state.events = events
+    },
+    SET_EVENTS_TOTAL (state, events) {
+      state.events = events
+    },
+    SET_EVENTS (state, events) {
+      state.event = event
     }
   },
   actions: {
@@ -39,6 +43,32 @@ export default new Vuex.Store({
       return EventService,postEvent(event).then(() => {
         commit('ADD_EVENT', event)
       })
+    },
+    fetchEvents({ commit }, { perPage, page}) {
+      EventService.getEvents (perPage, page)
+      .then(response => {
+        console.log('Total events are' + response.headers['x-total-count'])
+        commit('SET_EVENTS', response.data)
+      })
+      .catch(error => {
+        console.log('There was an error:', error.response)
+      })
+    },
+    fetchEvent ({ commit, getters }, id) {
+      var event =getters.getEventById(id)
+
+      if (event) {
+        commit('SET_EVENT', event)
+      } else {
+        EventService.getEvent(id)
+          .then((response) => {
+            commit('SET_EVENT',response.data);
+          })
+          .catch((error) => {
+            console.log("there was an error:", error.response);
+          })
+      }
+      
     }
   },
   modules: {},
