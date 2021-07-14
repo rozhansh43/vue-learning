@@ -6,6 +6,7 @@ import EventShow from "../views/EventShow.vue";
 import User from "../views/User.vue";
 
 Vue.use(VueRouter);
+
 const routes = [
   {
     path: "/",

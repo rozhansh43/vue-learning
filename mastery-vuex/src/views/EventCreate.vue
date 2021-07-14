@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Crate an Event
+            Create an Event
         </h1>
         <form @submit.prevent="createEvent">
             <label>
@@ -91,22 +91,22 @@ export default {
     return {
         times,
         categories: this.$store.state.categories,
-        event: this.createFreshEventObject()
+        event: this.createFreshEventObject ()
     }
   },
   methods: {
-   createEvent() {
+   createEvent () {
       this.$store
         .dispatch('createEvent', this.event)
         .then(() => {
-          this.$router.push({
-            name: 'event-show',
-            params: { id: this.event.id }
-          })
-          this.event = this.createFreshEventObject()
+            this.$router.push({
+                name: 'event-show',
+                params: { id: this.event.id }
+            })
+            this.event = this.createFreshEventObject()
         })
         .catch(() => {
-          console.log('There was a problem creating your event')
+            console.log('There was problem')
         })
     },
     createFreshEventObject() {

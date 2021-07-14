@@ -29,8 +29,18 @@ export default new Vuex.Store({
       { id: 4, title: '...', organizer: '...' }
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_EVENT ( state, event) {
+      state.events.push(event)
+    }
+  },
+  actions: {
+    createEvent({ commit }, event) {
+      return EventService,postEvent(event).then(() => {
+        commit('ADD_EVENT', event)
+      })
+    }
+  },
   modules: {},
   getters: {
     getEventById: state => id => {
